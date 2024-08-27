@@ -24,17 +24,17 @@ function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     switch (humanChoice) {
         case "rock":
-            // Checks if its a tie, or if human won.  Otherwise, human lost.
-            console.log(computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}` :
-                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
+            // Checks if its a tie, or if human won.  Otherwise, human lost. In all cases, updates and shows the score.
+            console.log(computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
             return;
         case "paper":
-            console.log(computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}` :
-                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
+            console.log(computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
             return;
         case "scissors":
-            console.log(computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}` :
-                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
+            console.log(computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
             return;
         default:
             // humanChoice is something other than the 3 choices of the game
