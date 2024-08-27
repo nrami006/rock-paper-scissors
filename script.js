@@ -13,4 +13,12 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice()); 
+function getHumanChoice() {
+    // Ask user for input with default value of rock.
+    let input = prompt("Rock, Paper, or Scissors?");
+    return input;
+}
+
+
+console.log(getComputerChoice());
+console.log(getHumanChoice());
