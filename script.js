@@ -25,16 +25,16 @@ function playRound(humanChoice, computerChoice) {
     switch (humanChoice) {
         case "rock":
             // Checks if its a tie, or if human won.  Otherwise, human lost.
-            console.log(computerChoice === "rock" ? "It's a tie!" :
-                computerChoice === "scissors" ? "You win!" : "You lose...");
+            console.log(computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}` :
+                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
             return;
         case "paper":
-            console.log(computerChoice === "paper" ? "It's a tie!" :
-                computerChoice === "rock" ? "You win!" : "You lose...");
+            console.log(computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}` :
+                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
             return;
         case "scissors":
-            console.log(computerChoice === "scissors" ? "It's a tie!" :
-                computerChoice === "paper" ? "You win!" : "You lose...");
+            console.log(computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}` :
+                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!` : `You lose... ${computerChoice} beats ${humanChoice}!`);
             return;
         default:
             // humanChoice is something other than the 3 choices of the game
