@@ -44,19 +44,21 @@ function playRound(humanChoice, computerChoice) {
     }
     // lowercase humanChoice so that capitalization doesn't matter
     humanChoice = humanChoice.toLowerCase();
+    const gameResults = document.querySelector(".game-results");
+    gameResults.style.opacity = "1";
     switch (humanChoice) {
         case "rock":
             // Checks if its a tie, or if human won.  Otherwise, human lost. In all cases, updates and shows the score.
-            console.log(computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
+            gameResults.textContent = computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
             return true;
         case "paper":
-            console.log(computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
+            gameResults.textContent = computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
             return true;
         case "scissors":
-            console.log(computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`);
+            gameResults.textContent = computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
+                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
             return true;
         default:
             // humanChoice is something other than the 3 choices of the game
@@ -99,7 +101,6 @@ let computerScore = 0;
 
 // Add Event listener to each player button using a query selector all and their id to make the player's choice
 const playerButtons = document.querySelectorAll(".player-button");
-console.log(playerButtons);
 for (const button of playerButtons) {
     button.addEventListener("click", () => {
         const humanSelection = button.id;

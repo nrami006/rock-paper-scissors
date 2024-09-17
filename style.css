@@ -1,0 +1,43 @@
+.prompt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game-results-container {
+    display: flex;
+    justify-content: center;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+}
+
+.game-results {
+    opacity: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    height: 10vh;
+}
