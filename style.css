@@ -16,9 +16,27 @@
 
 .body-container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-container {
+    display: flex;
+    flex: 0 1 33vw;
+    /* background-color: blue; */
     flex-direction: column;
     justify-content: center;
     height: 90vh;
+}
+
+#player-score,
+#computer-score {
+    display: flex;
+    flex: 0 1 33vw;
+    /* background-color: red; */
+    justify-content: center;
+    font-size: 500px;
+    font-weight: bold;
 }
 
 .game-results {
