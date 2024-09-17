@@ -96,4 +96,14 @@ function playGame() {
 
 let humanScore = 0;
 let computerScore = 0;
-// playGame();
+
+// Add Event listener to each player button using a query selector all and their id to make the player's choice
+const playerButtons = document.querySelectorAll(".player-button");
+console.log(playerButtons);
+for (const button of playerButtons) {
+    button.addEventListener("click", () => {
+        const humanSelection = button.id;
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    });
+}
