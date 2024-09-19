@@ -47,31 +47,82 @@ function playRound(humanChoice, computerChoice) {
     const gameResults = document.querySelector(".game-results");
     const playerScoreElement = document.querySelector("#player-score");
     const computerScoreElement = document.querySelector("#computer-score");
-    gameResults.style.opacity = "1";
+    const computerChoiceElement = document.querySelector(".computer-choice");
+    switch (computerChoice) {
+        case "rock":
+            computerChoiceElement.textContent = "✊";
+            break;
+        case "paper":
+            computerChoiceElement.textContent = "✋";
+            break;
+        case "scissors":
+            computerChoiceElement.textContent = "✌️";
+            break;
+    }
     switch (humanChoice) {
         case "rock":
             // Checks if its a tie, or if human won.  Otherwise, human lost. In all cases, updates and shows the score.
-            gameResults.textContent = computerChoice === "rock" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "scissors" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
-            playerScoreElement.textContent = humanScore;
-            computerScoreElement.textContent = computerScore;
-            return true;
+            switch (computerChoice) {
+                case "rock":
+                    // Tie
+                    gameResults.textContent = `It's a tie! You both chose ${humanChoice}.`
+                    break;
+                case "paper":
+                    // Player loses
+                    gameResults.textContent = `You lose... ${computerChoice} beats ${humanChoice}.`
+                    computerScore += 1;
+                    break;
+                case "scissors":
+                    // Player wins
+                    gameResults.textContent = `You win! ${humanChoice} beats ${computerChoice}!`
+                    humanScore += 1;
+                    break;
+            }
+            break;
         case "paper":
-            gameResults.textContent = computerChoice === "paper" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "rock" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
-            playerScoreElement.textContent = humanScore;
-            computerScoreElement.textContent = computerScore;
-            return true;
+            switch (computerChoice) {
+                case "rock":
+                    // Player wins
+                    gameResults.textContent = `You win! ${humanChoice} beats ${computerChoice}!`
+                    humanScore += 1;
+                    break;
+                case "paper":
+                    // Tie
+                    gameResults.textContent = `It's a tie! You both chose ${humanChoice}.`
+                    break;
+                case "scissors":
+                    // Player loses
+                    gameResults.textContent = `You lose... ${computerChoice} beats ${humanChoice}.`
+                    computerScore += 1;
+                    break;
+            }
+            break;
         case "scissors":
-            gameResults.textContent = computerChoice === "scissors" ? `It's a tie! You both chose ${humanChoice}.\nThe score is ${humanScore} to ${computerScore}` :
-                computerChoice === "paper" ? `You win! ${humanChoice} beats ${computerChoice}!\nThe score is ${++humanScore} to ${computerScore}` : `You lose... ${computerChoice} beats ${humanChoice}.\nThe score is ${humanScore} to ${++computerScore}`;
-            playerScoreElement.textContent = humanScore;
-            computerScoreElement.textContent = computerScore;
-            return true;
+            switch (computerChoice) {
+                case "rock":
+                    // Player loses
+                    gameResults.textContent = `You lose... ${computerChoice} beats ${humanChoice}.`
+                    computerScore += 1;
+                    break;
+                case "paper":
+                    // Player wins
+                    gameResults.textContent = `You win! ${humanChoice} beats ${computerChoice}!`
+                    humanScore += 1;
+                    break;
+                case "scissors":
+                    // Tie
+                    gameResults.textContent = `It's a tie! You both chose ${humanChoice}.`
+                    break;
+            }
+            break;
         default:
             // humanChoice is something other than the 3 choices of the game
-            console.log("That isn't a valid choice!")
+            gameResults.textContent = `Something went wrong...`
     }
+    computerChoiceElement.style.opacity = "1";
+    gameResults.style.opacity = "1";
+    playerScoreElement.textContent = humanScore;
+    computerScoreElement.textContent = computerScore;
 }
 
 function playGame() {
@@ -110,9 +161,16 @@ let computerScore = 0;
 // Add Event listener to each player button using a query selector all and their id to make the player's choice
 const playerButtons = document.querySelectorAll(".player-button");
 for (const button of playerButtons) {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+        const playerButtons = document.querySelectorAll(".player-button");
+        for (const btn of playerButtons) {
+            if (btn != e.target) {
+                btn.style.backgroundColor = "black";
+            }
+        }
         const humanSelection = button.id;
         const computerSelection = getComputerChoice();
+        e.currentTarget.style.backgroundColor = "#dab3ff";
         playRound(humanSelection, computerSelection);
     });
 }
